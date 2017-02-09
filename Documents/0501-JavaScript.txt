@@ -1,0 +1,14 @@
+PHP Core & Html,CSS, JavaScript
+===================================
+
+1. Language with OOP
+2. PHP Libraries - APIs
+3. JavaScript Language - OOP
+4. HTML/CSS
+5. CSS Framework - Twitter bootstrap
+6. Testing Framework (JavaScript & PHP)
+7. RDBMS - MySql & Structured Query Language
+8. Source code control - GIT protocol (github.com)
+9. Introduction to Laraval MVC Framework
+10. jQuery, Underscore etc libraries 
+11. SVG - Scalar Vector Graphics

@@ -1,0 +1,20 @@
+NodeJS and Git for Windows
+==========================
+1. Download "git" for window (google search) and install it. -- This is a "git" client software to create, clone, push    or pull reopsitory.
+
+2. Download NodeJS and install it. This is JavaScript Framework which includes JavaScript language + Runtime + Number of
+   JavaScript libraries and also allow us to download other Libraries of JavaScript via npm - NodeJS Package Manager    tool.
+
+3. Register the user account : www.github.com
+
+To verify the installation, open command prompt (cmd)  Win Key + R
+   >git
+        will dissplay command help if git client is installed.
+        [Note: IDEs like PHPstrome, Netbeans, Eclipse etc already have git clients]
+
+  >node
+  >name = 'Happy'
+  >console.log(name, name.length)
+
+    Press Ctrl + C two times to stop the "console".
+   

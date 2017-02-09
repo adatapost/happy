@@ -1,0 +1,1040 @@
+CSS - Cascade Stylesheet
+============================================================================================
+
+CSS is a language that is used to style the HTML & SVG objects. In fact, CSS are set of "properties" that instruct the web-browser to set font, color, padding/spacing, margin, animation and many more behaviors.
+
+CSS property - It is case-sensitive key-value pair.
+
+		Syntax:    property-name: value;
+			   (for example,  font-size: 1.2em; color: red; )
+
+		CSS properties & values are always in lower letters.
+
+CSS Selectors - A SELECTOR is a "group of properties" and that group can be assigned to one or more HTML objects so 
+		style them.
+
+General syntax:   
+
+SELECTORNAME {
+  property1: value1;
+  property2: value2;
+  ...
+}
+
+How to glue/apply the CSS properties & selectors?
+--------------------------------------------------
+
+There are three ways through which we can glue CSS properties to the HTML objects.
+
+1. Using "style" attribute of the HTML tag.
+
+Example:
+
+ <p style="font-size: 1.5em; color: blue">This is blue text with 150% font size</p>
+ <div style="font-size: 250%; color: red">This is red text with 250% font-size</div>
+ <button style="color: green; background: yellow">Green button</button>
+
+ Each property is separated with ; (semi-colon).
+ Do not use this approach because we have to set "style" attribute for each HTML tag within the document manually and
+ it will be too difficult to update the style later.
+
+2. Using <style> HTML tag to embed CSS selectors into the web document.
+
+   It is important to note that the <style> tag can be placed inside the <head> as well as <body> so you can use
+   this method just before the usage of selectors.
+
+For example,
+
+<body>
+ <style>
+   h1 {
+     font-size: 5em;  /* 500%     */
+     color: green;
+   }
+ </style>
+ <h1>Hello</h1>
+ <h1>World</h1>
+</body>
+
+  This approach is less effective when we want to have the same selectors for more than one pages; It means we must have
+  to copy+paste CSS selectors into each web document. And again it will be painful to update the CSS property from one
+  of more pages.
+
+3. Embed the CSS document using <link> tag
+
+   A CSS document might be a file having .css extension or a program that produces the CSS content.
+
+  The <link rel="stylesheet" href="location-path-of-CSS-document" />
+
+For example,
+
+<link rel="stylesheet"
+      href="http://www.yoursite.com/mystyle.css"/>
+             ^
+             |
+             This is absolute path of css document
+
+<link rel="stylesheet"
+      href="/styles/mystyle.css"/>
+             ^
+             |
+             This is relative path of css document. The "mystyle.css" is located under your website into the "styles"
+		folder.
+
+ Note:   rel  stands for relative. (relative to the "stylesheet")
+         href stands for Hyper document reference (address of web resource)
+
+ <link rel="stylesheet" href="/myapp">  Note that "myapp" program returns CSS content.
+ <link rel="stylehseet" href="mystyle.php"> "mystyle.php program returns CSS content."
+ 
+  
+Example: Create following folders and files.
+
+/app1/
+     |
+     |-----/css/
+               style.css
+     |
+     | index.html
+     | about.html
+        etc...
+
+Naming conventions of folder, file names and best practice:
+   1. Always use lower-case names
+   2. Use meaningful names. Use - (hyphen) instead of _ (underscrore) in file & folder names.
+   3. Don't add whitespaces in folder & file names.
+   
+   4. Use following guideline to define selectors:
+                
+                    |---------- Add only one space between selector-name and { opening curly brace
+                    V
+       selector-name {
+
+         property-name: value;   <---- Add only one space between property-name: and value
+             property1: value;   <----- try to indent the value
+        }
+
+ style.css
+=============
+/* This document contains CSS Selectors */
+body {
+ font-size: 2.6em;   
+}
+
+h1 {
+ color: blue;
+}
+
+p {
+ font-style: italic;
+ color: red;
+}
+
+index.html
+=================
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome Page</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Appleman Pvt Ltd</h1>
+    <p>Welcome to my website</p>
+  </body>
+</html>
+
+
+The CSS Selectors & CSS properties
+===================================================================================================
+There are number of CSS selectors that carries set of CSS properties.
+
+1. Universal CSS selector *
+
+* {
+  property: value;
+  ...
+}
+
+   CSS properties are applied to all HTML objects. The * selects all HTML tags and set the CSS properties.
+
+2. Element selector -- Element selector selets all tags that belongs to the given element.
+
+p {
+ font-style: italic;
+ font-weight: 900;
+}
+    
+<p>All para have same style</p>
+<div>This is not a 'p' element</div>
+<p>Yes I'm 'p' element</p>
+
+3. Class selector  -- A custom selector whose name begins with . (period) and it is set via the "class" attribute
+			of HTML tag.
+
+code in css file
+----------------
+.my-border {
+  border: 1px solid black;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.bk-yellow {
+  background: yellow;
+}
+
+.bk-green {
+  background: green;
+}
+
+code in html document
+----------------------
+<p class="my-border">This is a box</p>
+<div class="my-border text-red">This is a box with red text</div>
+<button class="bk-green text-red">Click Me</button>
+<h1 class="my-border text-red bk-yellow">ABC LTD</h1>
+
+  The "class" selectors can be set one or more by adding space between two selectors and that's why they are mostly
+  used to re-use the styles.
+
+4. Id selector  -- It is also a custom selector that is begins with # (hash) and is attached via "id" attribute.
+			Because "id" means identity of the object and it should be unique so the #id selector 
+			should be used when unique object or unique id is available.
+
+#error {
+ font-size: 1.5em;
+ font-style: italic;
+ color: red;
+}
+
+and you can attach or glue this selector,
+
+<div id="error">This is a test. </div>
+         
+
+5. multiple selectors  --- you can define CSS properties for one or more selectors:
+
+body, div, html, h1, h2, h3, h4 {
+ margin: 0;
+
+}
+
+6. Descedent selector 
+
+   selector1 selector2 {
+
+   }
+
+   CSS Properties will be applied to all "selector2" which are added inside the "selector1". The "selector1" is a parent and "selecto2" is the child, grand child or great grand child and so on.
+
+Example: 
+
+section div {
+ color: red;
+}
+
+<section>
+  <div>I'm a child</div>
+  <article>
+    In side the article <div>I'm a child</div>
+  </article>
+  <div>Yes I'm</div>
+   <article><div>AAA</div></article>
+</section>
+<div>Yes! I'm not :) </div>
+
+
+7. Child selector 
+
+   selector1 > selector2 {
+   }
+
+   Only the first level child "selector2" will be selected.
+
+Example:
+
+section > div {
+  color: red;
+}
+[Same as previous example code]
+
+8. Sibling or spouse selector 
+
+ selector1 + selector2 {
+ }
+
+ CSS properties will be assigned to the first sibling of "selector1".
+
+Example:
+
+h3 + div {
+  color: red;
+}
+
+<h3>Introduction</h3>
+<div>1st sibling</div>
+<div>2nd sibling</div>
+<h3>Chapter-1</h3>
+<p>1st sibling</p>
+<div>2nd siblind</div>
+<div>3rd sibling</div>
+<h3>Chapter-2</h3>
+<div>1st sibling</div>
+
+9. Siblings selectors (All siblings)
+  
+selector1 ~ selector2 {
+}
+
+h3 ~ div {
+  color: red;
+}
+
+[Use previous example code]
+
+10. Attribute selector
+
+selector[attribute="value"] {
+
+}
+
+input[type="text"] {
+  padding: 4px 4px 4px 25px;
+}
+
+input[type="submit"] {
+  padding: 4px;
+  background: red;
+  color: white;
+}
+
+div[name="help"] {
+  color: green;
+}
+
+<div name="help">Helpline</div>
+<div>
+   Form elements
+</div>
+<input type="text"/>
+<input type="submit" value="Submit your data" />
+<div name="help">Please fill the input box and then submit</div>
+
+11. pseudo selectors - These selectors are reserved words of CSS and they represent actions.
+
+For example,
+
+a:link, a:visited, a:active are three pseudo selectors works with "<a> anchor" tag.
+
+a:link {
+  background: green;
+}
+a:visited {
+  background: yellow;
+}
+a:active {
+  background: red;
+}
+
+<a href="index.html">Home</a>
+<a href="about.html">About us</a>
+<a href="contact.html">Contact us</a>
+
+Example: selector:hover -- when mouse enters into the selector's region
+
+h1:hover {
+  color: blue;
+}
+a:hover {
+  color: black;
+}
+
+<h1>ABC Ltd</h1>
+<a href="#">Logo</a>
+
+Example: selector:first-letter, selector:first-line
+
+.para:first-letter {
+  font-size: 4em;
+}
+
+p:first-line {
+  font-weight: 900;
+}
+
+<div class="para">
+ The red sun and red rose were.....
+</div>
+<p>
+ There are was a king named Pharah had... type atleast 3 lines..
+</p>
+
+Example:  ::selection to change the text selection color
+
+::selector {
+  background: red;
+}
+
+CSS Properties
+==========================================================================================
+
+The measurement units  
+----------------------
+
+CSS allow us to use inch (in), centimeter (cm), pixel (px) and point (pt) absolute measurement units and
+emphesis (em) and percent (%) as a relative measurement units.
+
+Absolute measurement units set "fixed" value and it cannot be change with the changes of screen resolution, or changes in container's height & width.
+
+On othar hand, relative unit value will be changed whenever the resolution of device and height & width of container changed.
+
+=> Always use the relative units for "font" and line-height (spacing between two lines)
+=> Always use the relative units for those layouts (page structure) whose size can be increased or decreased frequently.
+=> Never use the cm, in, pt but you can use "px" to set border or some sort of fixed values.
+
+
+Example:
+
+body {
+ font-size: 150%;  /* font-size: 1.5em;  */
+ line-height: 0;   /* 10px; or 1em or 1.5em */
+}
+h1 {
+ font-size: 32px;  /* font-size: 4em; */
+}
+
+Change the measurement units and learn the side effects of fixed/absolute units.
+
+Some of the CSS value don't use measurement units and they represent int or double value
+---------------------------------------------
+margin: 0;    or margin: 0px  -- So while setting 0, avoid the unit name.
+
+font-weight: 100 to 900 value;  -- 100,200,...900 are impression value (bold, bolder, boldest..)
+
+opacity: 0.0 to 1.0;            - Opacity or alha value must be in between 0.0 to 1.0
+
+margin: auto;                   - the "auto" keyword tells the browser to compute / calculate values based upon the
+				  current content of the markup.
+color: inherit;                 - the "inherit" keyword inherit the value from its parent/super elements.
+
+
+Color - named color, hexadecimal value and rgb(), rgba() functions
+===================================================================
+Text color, background color, outline, border color and shadows uses color value and they can be named colors (red, blue, black, etc), hexadecimal value - #000000 (#+six-hexa-decimal char) or #000 (#+three-hex-decimal), and rgb(red,green,blue), rgba(red,green,blue,alpha) functions.
+
+#000000 - first two char for red color - 00 to ff (0 to 255)
+          next two char for green color - 00 to ff
+          last two char for blue color  - 00 to ff
+
+#ff0000;  red
+#aa0000;  maroon (dark red)
+#00ff00;  green
+#00ff55;  light green (add some blue)
+
+
+You can use shorthand of #3-char-hex if each color (red,green, blue) value pair represent duplicate char.
+
+	e.g  #000000   is equals to #000;
+             #ffaa00   is equals to #fa0;
+             #449922   is equals to #492;
+     but #449122 can't be used as #492;
+
+h1 {
+  color: #ff2233;
+}
+
+h2 {
+  color: #f23;
+}
+
+The rgb and rgba function uses int value which vary from 0 to 255 for each color and 0.0 to 1.0 for alpha
+
+h1 {
+ color: rgb(255,22,23);
+}
+h2 {
+ color: rgba(255,22,12, 0.5);
+}
+
+1. margin: value;
+   margin: top right bottom left;
+
+   You can also use margin-left, margin-right, margin-top, and margin-bottom properties. The "margin" is a shorthand
+	of these properties.
+
+Example:
+
+body {
+ margin: 0;  
+ border: 1px solid red;
+}
+
+change 
+   margin: 0 30px; will set 0 for top, 30px for right bottom and left
+   margin: 0 auto; will set 0 for top and rest three are auto
+
+Example:
+
+body {
+  margin: 0 5% 0 5%;
+  border: 1px solid red;
+}
+
+<body>
+  <h1>Heading</h1>
+</body>  
+
+Example: To display a component at center of the page or parent -- Set the width and margin: auto;
+
+.my-item {
+  width: 300px;
+  margin: auto;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+<div class="my-item border">This is my text</div>
+<h3 class="border my-item">Welcome</h3>
+
+Example: Design the page layout
+
+|---------|
+| Header  |
+|-------- |
+| Nav     |
+|---------|
+|         |
+|---------|
+| Footer  |
+|---------|
+
+style.css
+---------
+html, body, div, h1 {
+  margin: 0;
+}
+
+body {
+    font-size: 1.8em;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+.header {
+    background: #f40;
+    color: white;
+}
+.footer {
+    background: #f40;
+    color: white;
+}
+
+.nav {
+    background: black;
+    color: white;
+}
+
+.content {
+   min-height: 400px;
+}
+.center {
+    margin: auto;
+}
+.w3 {
+    width: 300px;
+}
+.w4 {
+    width: 400px;
+}
+.w2 {
+    width: 200px;
+}
+.w5 {
+    width: 500px;
+}
+.border {
+    border: 1px solid #aaa;
+}
+
+Markup
+-------
+<body>
+  <div class="container">
+      <header class="header"><h1>ABC</h1></header>
+      <nav class="nav">Links</nav>
+      <section class="content">
+          Body content
+          <div class="w4 border center">Welcome</div>
+          <h3 class="w2 border center">Welcome</h3>
+          <h3 class="w5 border center">Welcome</h3>
+          <h3 class="w3 border center">Welcome</h3>
+      </section>
+      <footer class="footer">
+          <p>&copy; ABC Ltd - 2016</p>
+      </footer>
+  </div>
+</body>
+
+
+2. padding: value;   set padding at all four sides
+   padding: top right bottom left; and you can also use padding-left, padding-right, padding-bottom and padding-top
+
+3. border: width style color; Or use border-left, border-top, border-right, border-bottom
+   
+4. border-radius: value;
+   border-radius: leftTop rightTop rightBottom leftBottom;  To set corner angle radius (round corner)
+
+   Style constants : solid, dotted, dashed, double, outset, inset, ridge etc
+
+.welcome-box {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
+
+<div class="welcome-box">
+  <h2>Welcome</h2>
+  <p>Hey! Welcome to my site. This site is about for information</p>
+</div>
+
+5. outline: value; To set the outline around the border of the UI.
+
+   outline: with style color; same as border.
+
+6. box-shadow: xposition yposition blur color; To add drop show around the box
+
+.welcome-box {
+   box-shadow: 4px 4px 4px black;
+   /* add other properties as per prev example
+}
+
+7. text-shadow : xpos ypos blur color; Drop shadow for text
+
+.heading {
+  font-size: 4em;
+  text-shadow: 3px 3px 3px #aaa;
+}
+
+<div class="heading">
+  Appleman Ltd
+</div>
+
+8. float: left | right  - float the elements at left or right side of the parent
+9. clear: both | left | right;  Remove the float
+
+.float-left {
+ float: left;
+}
+.float-right {
+ float: right;
+}
+.clear {
+ clear: both;
+}
+
+div { border: 1px solid red; }
+
+<div>
+ <div class="float-right">A</div>
+ <div class="float-left">B</div>
+ <div class="float-right">C</div>
+ <div class="float-left">D</div>
+</div>
+<!--- Reset the previous float --->
+<div class="clear"></div>
+<div>Without the float</div>
+
+<div>
+  <div class="float-left">Left Section</div>
+  <div class="float-left">Another Left Section</div>
+</div>
+
+<div class="clear"></div>
+
+
+NOTE: float and clear properties are very useful to create the page layouts.
+
+Page layout & wireframe
+============================================
+First of all, we must have to draw sketch of web page layout or drawing that we are thinking right now - we can use paint brush or any other tool to draw a model or structure or wireframe of our plan/thoughts.
+
+Imagin the content, style, color etc things while modeling the page layout.
+
+For example, (draw a layout)
+
+style.css
+===========
+body,  html, div, h1 {
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* Float properties & selectors */
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+
+/*--- Page header, title, logo etc */
+.header {
+    min-height: 100px;
+}
+.logo {
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    padding: 5px;
+}
+.title {
+    font-size: 4em;
+}
+
+
+/* -- Menu or Navigation --*/
+.nav {
+    padding: 4px;
+    background: black;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 4px;
+}
+.nav a:hover {
+    color: black;
+    background: white;
+}
+
+/* Black Borders */
+.border-t {
+    border-top: 1px solid black;
+}
+.border-b {
+    border-bottom: 1px solid black;
+}
+.border-l {
+    border-left: 1px solid black;
+}
+.border-r {
+    border-right: 1px solid black;
+}
+
+.w1 {
+    width: 100px;
+}
+.w15 {
+    width: 150px;
+}
+.w2 {
+    width: 200px;
+}
+.w3 {
+    width: 300px;
+}
+
+/*-- Panel selector */
+.panel {
+    border: 1px solid #aaa;
+    padding: 4px;
+}
+.panel .panel-title {
+    font-weight: 900;
+    background: #aaa;
+    padding: 4px;
+}
+.panel .panel-body {
+    padding: 4px;
+}
+
+.content {
+    padding: 15px 0 10px 20px;
+}
+
+Index.html
+---------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+ <div class="container border-l border-r">
+     <header class="header">
+        <div>
+            <div class="float-left logo w2">Logo</div>
+            <div class="float-left title">Title1</div>
+            <div class="float-right">Right side</div>
+        </div>
+     </header>
+     <div class="clear"></div>
+     <nav class="nav">
+         <a href="#">Home</a>
+         <a href="#">About us</a>
+         <a href="#">Contact us</a>
+     </nav>
+     <section>
+         <aside class="float-left border-r w2 ">
+             <!-- 1st Panel -->
+              <div class="panel">
+                  <div class="panel-title">
+                      Search
+                  </div>
+                  <div class="panel-body">
+                      <p>Search keywords</p>
+                      <p><input type="search"/> </p>
+                      <p><button>Go</button></p>
+                  </div>
+                  <div class="panel-footer">
+
+                  </div>
+              </div>
+             <!-- 2nd Panel -->
+              <div class="panel">
+                  <div class="panel-title">
+                      Important links
+                  </div>
+                  <div class="panel-body">
+                      This is all about
+                  </div>
+              </div>
+         </aside>
+
+         <aside class="float-left content">
+              Right
+         </aside>
+     </section>
+     <div class="clear"></div>
+     <footer class="footer border-b border-t">
+         <p>@copy; Site Name - 2016</p>
+     </footer>
+ </div>
+</body>
+</html>
+
+
+10. width: value;  - fixed width - content will be overflow if it exceeds the width
+11. height: value;   fixed height - --- do --- the width
+12. min-width: value; Minimum width
+13. min-height: value; minimum height
+14. max-height and max-width - set max value for the object's height and width.
+15. overflow: normal | hidden | scroll | auto; To deal with overflow when fixed height & width are set.
+
+Example:
+
+.item {
+ width: 100px;
+ height: 100px;
+ border: 1px solid #aaa;
+}
+
+<div class="item">
+  add three or more lines of text..
+  ...
+</div>
+
+
+To hide the overflow, set overflow: hidden 
+To set scrollbar forever, set overflow: scroll; The "auto" value automatically adds scrollbar if content exceed the size.
+
+16. position: static | fixed | absolute | relative; (default is static)
+
+    To position the elements on the browser. The default is static. 
+
+static - you can't set top, left, right or bottom property because element's position will be computed automatically and they are placed one after one.
+
+Example:
+
+Add (copy paster) two screenful text in the document
+
+<p>....</p>
+<p>...</p>
+... aproximate 2 or more screenful
+
+<div class="item">
+   This is the item will be displayed
+</div>
+
+
+<style>
+  .item {
+    background: yellow;
+    font-size: 2em;
+    position: static;
+    bottom: 0;
+    right: 0;  /* also change left: 20px or top: 20px etc */
+  }
+</style>
+
+[Note: change position: fixed or absolute or relative; We can change left, top, right or bottom with these values]
+
+Example: Sticky header-footer
+
+html, body {
+    margin: 0;
+    height: 100%;
+    position: relative;
+}
+.header {
+    height: 20%;
+    background: blue;
+}
+.content {
+    height: 60%;
+    background: yellow;
+}
+.footer {
+    height: 20%;
+    background: blue;
+}
+<body>
+ <header class="header"></header>
+ <div class="content"></div>
+ <footer class="footer"></footer>
+</body>
+
+17. font-family: font1, font2, font3,..., font-family-name;
+
+    We've following standard font families:
+        1. serif       --  Sharp angle at edge or the font char
+        2. sans-serif  --  Rectnagle or round corner at the edge of font char
+        3. monospace   --  Type writter style
+        4. cursive     --  Cursive text
+        5. fantsy      --  Designer text
+
+   The font names must be enclosed in single or double quotes if there are white spaces or special characters in their    names.
+
+  For example,
+
+body {
+ font-family: Arial, "Arial Narrow", "Helvatica", sans-serif;
+}
+
+ This property instructs the browser to choose first font if avaialbe on client location, otherwise select next and then next if not exists  but finally choose the "default" font by setting "font family base name".
+
+font-family: "Georgia", "Times New Roman", serif;
+
+
+ Embed the fonts
+ ----------------
+ We can embed the fonts into the web-document and then web-browsers will automatically download their location to use  them.
+
+ Method-1 Use fonts which are at remote location -- We will uses fonts.google.com which a collection of open source 		fonts.
+
+		[Note all open source fonts are free; sometime they are not.] 
+                
+                IMPORTANT: Always keep licence file into your app for the open source fonts and other tools.
+
+
+      First use via <link>
+
+             1. Copy the <link> and paste it inside the <head> and before your css document's link element
+
+                  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+                  <link href="css/style.css" rel="stylesheet">
+ 
+             2. add font-family in your css file
+
+                  body {
+                      font-family: 'Ubuntu', sans-serif;
+                  }
+         [Visit fonts.google.com + Select the font + Click on font list which is bottom of the edge ]
+
+      Second use via CSS directive @import and url() function
+
+            1. Copy the @import and paste it into .css file
+                      @import url('https://fonts.googleapis.com/css?family=Molle:400i');
+            2. add font-family,
+                body {
+                   font-family: Molle, cursive;
+                }
+
+ Method-2  Use locally copied (copied at website folder) fonts.
+
+             1. Download the font ( from fonts.google.com ) zip + unzip + copy the font files and licence under the
+		 your website folder (say /css/fonts folder).
+
+              2. Add following code (as per font files) into .css file
+
+@font-face {
+    font-family: "Atithi";
+    src: url(fonts/Athiti-Medium.ttf);
+}
+@font-face {
+    font-family: "Lobster";
+    src: url(fonts/Lobster-Regular.ttf);
+}
+
+body {
+    font-family: "Atithi", sans-serif;
+    font-size: 2em;
+}
+h1 {
+    font-family: "Lobster", cursive;
+}
+
+18. font-size: value; Always use % or em (Relative units)
+19. font-style: normal | italic | oblique; 
+20. font-weight: 100 to 900; bold face value. 100 means lighter and 200 is darker then 100 and so.
+21. font-variant: normal | small-caps;
+22. line-height: value; set line height and value should be relative unit.
+23. text-decoration: none | underline | overline | line-though;
+24. text-transform: none | capitalize | uppercase | lowercase;
+25. text-shadow: xpos ypos blur #color - set shadow around text
+
+.proper-case {
+  text-transform: capitalize;
+}
+
+<p class="proper-case">this text's first letters of all words will be capitalize</p>
+
+.upper {
+  text-transform: uppercase;
+}
+.lower {
+  text-transform: lowercase;
+}
+
+<h1 class="upper">the abc ltd</h1>
+<h5 class="lower">slogan...</h5>
+
+26. text-align: left | right | center | justify;
+27. word-break: keep-all | break-all; 
+28. word-wrap: word-break | none;
+29. word-spacing: value; 
+30. letter-spacing: value;
+
+.site-title {
+  font-size: 4em;
+  letter-spacing: 5px;
+  word-spacing: 10px;
+  font-variant: small-caps;
+}
+
+<div class="site-title">
+ The Abc Ltd
+</div>

@@ -1,0 +1,214 @@
+The <form> and Input elements
+-----------------------------------------------------------------------------------------------------
+
+The "form" element is used to collect the name-value pairs of data and sent them to the server program either using "GET" or "POST" request method. We will learn request methods in later session.
+
+Syntax:
+
+ <form method="post or get" action="server-program-name">
+   <!---- Input elements should have the "name" attribute --->
+
+   No : <input type="number" name="no" />
+ Name : <input type="text" name="name"/>
+Email : <input type="email" name="email"/>
+    ....
+    ....
+ </form>
+
+
+Use following input elements to design the "form"
+--------------------------------------------------
+1. <input type="text"> - single line text
+2. <input type="number"> - number input
+3. <input type="email"> - Email input
+4. <input type="date">  - Date input
+5. <input type="color">  - Color selector
+6. <input type="password"> -- Password input
+7. <input type="hidden">   --- Store text without displaying
+8. <input type="file">    -- File upload file selector
+9. <input type="radio">  -- Radio button
+10. <input type="checkbox"> - Checkbox
+11. <input type="submit">  - Submit button
+12. <input type="button">  - Non submit button
+13. <input type="reset">  - Reset button
+14. <input type="tel" > -- Telphone number input
+15. <input type="search"> - Search text input
+16. <input type="range" > -- Number selector
+17. <select>
+       <option value="val1">Text1</option>
+       ...
+    </select>    - Dropdown list or Combo box
+
+18.  <select size="n">
+       <option value="val1">Text1</option>
+       ...
+    </select>   -- List box with single item selection
+
+   <select size="n" multiple>
+       <option value="val1">Text1</option>
+       ...
+    </select>   -- List box with multiple items selection
+19.
+    <textarea><textarea> - Multiple line text
+    <textarea cols="40" rows="5"><textarea> -- control the height & width
+
+20. <input type="image" src="imagefile" > -- Image submit button
+
+21. <button type="submit | button">Button</button> - Submit as well as non-submit button.
+
+
+The submit buttons
+-------------------
+We've three submit buttons and we can use anyone from them but the <button> has more general form then <input type='submit'> and <input type='image'>. So, we should use the <button>.
+
+The "fieldset" element
+----------------------
+
+The <fieldset> element is used to group the <form> elements. However you can use for different purposes too.
+
+<fieldset>
+   <legend>Title or Legend</legend>
+   <div>
+       .....
+   </div>
+</fieldset>
+
+The "label" element
+--------------------------
+The <label> is used to label the input elements and also set the focus to the input when label is selected--- for the mobile first behavior.
+
+Example: (Best practice)
+
+<fieldset>
+  <legend>Employee</legend>
+  <form>
+     <p>
+         <label>No : <input type="number" name="no" /> </label>
+      </p>
+     <p>
+         <label>Name : <input type="text" name="name" /> </label>
+      </p>
+      <p>
+         <button>Submit</button>
+      </p>
+  </form>
+</fieldset>
+
+If <label> and <input> element are not used altogether (as previous example) then we must have to use <label for"id"> syntax.
+
+The <label for="id-of-input">Your label goes here</label>
+    <input type="text" id="id-of-input">
+
+Example:
+
+   <form>
+        <p><label for="no">No</label></p>
+        <p><input id="no" type="number" name="no" /></p>
+        <p><label for="name">Name</label></p>
+        <p><input id="name" type="text" name="name" /></p>
+        <p><button>Submit</button></p>
+    </form>
+
+
+To style the diferent input elements via attribute selectors (Best practices)
+-------------------------------------------------------
+
+input[type="text"] {
+   ..
+}
+input[type="email"] {
+    ..
+}
+
+If you use "input" element selector then the properties will be applicable to all input types.
+
+Use "placeholder" attribute to label the input element (Best pracrice)
+------------------------------------------------------------
+
+<input type="number" name="no" placeholder="Enter your ID"/>
+<input type="email" name="email" placeholder="Your email"/>
+
+
+Use the "title" attribute to set the ToolTip (for any HTML element)
+---------------------------------------------------------------------
+<input type="number" name="no" 
+       title="A number from your Id card"
+       placeholder="ID"/>
+
+<a href="page.html" target="_blank" title="This will open in new tab">Page</a>
+<a href="page.html" title="This will open in current tab">Page</a>
+
+
+<p>
+  <abbr title="HyperText Markup Language">HTML</abbr> presents your data onto the web
+</p>
+
+<style>
+  abbr {
+      padding: 3px;
+      border-bottom: 2px solid #aaa;
+  }
+</style>
+   
+Use the "required"  attribute to mark the input field as a mandatory
+------------------------------------------------------------------------
+
+<form>
+   <input type="number" required placeholder="No" name="no" >
+   <input type="email" required placeholder="Email" name="email" >
+   <button>Submit</button>
+</form>
+
+Use the common value for name attribute to create a group of radio buttons
+-----------------------------------------------------------------------------
+
+<form>
+   <p>
+      Male : <input type="radio" value="M" name="gender" />
+      Female: <input type="radio" value="F" name="gender" />
+    </p>
+</form>
+
+Use the <datalist> to allow text selection of <input type="text">
+---------------------------------------------------------------------------
+The "list" attribute of <input type="text" list="id-of-datalist"> used
+
+Example:
+
+    <input type="text" list="city-list" name="city">
+
+    <datalist id="city-list">
+        <option value="Mehsana"></option>
+        <option value="Mehrwada"></option>
+        <option value="Meruth"></option>
+    </datalist>
+
+    Drop down or Combobox:
+    <select>
+        <option>Mehsana</option>
+        <option>Mehrwada</option>
+        <option>Meruth</option>
+    </select>
+    List box: 
+    <select size="3">
+        <option>Mehsana</option>
+        <option>Mehrwada</option>
+        <option>Meruth</option>
+    </select>
+
+
+Don't nest the <form> elements
+---------------------------------
+A document has one or more form tags but beware of the nesting of form tag.
+
+  <form>
+    <form> <---- should be avoided
+     ....
+
+The "id" and "name" attribute
+------------------------------
+The "id" attribute is maily used by the JavaScript code and it names the HTML object (or variable) whereas the "name" attribute is used by <form> as well as JavaScript code.
+
+The "id" attribute should be unique whereas the attribute value of "name" may or may not unique (in case of radio button).
+
+

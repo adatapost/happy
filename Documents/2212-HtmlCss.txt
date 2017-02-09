@@ -1,0 +1,326 @@
+31. background property - to paint the background using solid or gradient color or with the image.
+
+    The "background" is the short hand property and you can also uses individual properties like: 
+      background-color, background-image, background-size and many more.
+
+    To reference the image resource, we must have to use url(path) function. The url() takes relative or absolute path 	of the image.
+
+	e.g,  url("http://www.abc.com/my-image.png")  Or  url(images/logo.png) or url(../images/logo.png)
+
+        Use single or double quotes if image file name has whitespaces.
+
+     background: color;  -- set the backgound color
+     background: url(imagepath) repeat-value position, ....;
+
+   Note: First of create an "images" folder and add some image, picture files. Be sure that the files you are going to
+	 copy into the images folder have meaningful names. And use lower-case-names.
+     
+    /site/
+         |---------/css/
+                      style.css
+         |---------/images/
+                      logo-small.png
+                      logo-large.png
+                      cross.png
+                      blue-bg.jpg and many more....
+
+Ex-1
+
+body {
+  background: url(../blue-bg.jpg);
+}
+
+Above CSS property will paint entire body with specified image. It means an image will be tiled - horizontally and vertially.
+
+Ex-2
+
+.my-box {
+   background: url(../images/cross.png);
+   height: 400px;
+   width: 400px;
+   border: 1px solid black;
+}
+
+<div class="my-box">
+  <h2>This is wonderful feature. Isn't it?</h2>
+</div>
+
+
+Ex-3: Paint the image without repeating -- using "no-repeat"
+
+ background: url(../images/cross.png) no-repeat;
+
+Ex-4: Horizontally repeat using repeat-x and vertially using repeat-y. By default background will be repeated horizontally and vertically.
+
+background: url(image-path) repeat-x;
+Or
+background: url(image-path) repeat-y;
+
+Ex-5: background-size: auto | % | lengthpx | contain | cover; To set the background paint size when it an image is paint 			with "no-repeat".
+
+To display an image at the background of page that fills entire background:
+
+body {
+    background: url(../images/birds.jpg) no-repeat;
+    background-size: cover;
+}
+
+Ex-6: Paint images at four angles, four edges and at the center of the container using position value - left, right,
+	bottom,top, center
+
+
+.my-box {
+    background: url(../images/punch-circle.png) no-repeat left top,
+                url(../images/punch-circle.png) no-repeat top center,
+                url(../images/punch-circle.png) no-repeat center center;
+    height: 400px;
+    width: 400px;
+    border: 1px solid #aaa;
+}
+
+<div class="my-box"></div>
+
+Ex-7: Paint a part of image. It means display a certain area of an image which will be controlled by height & width of
+	container and also position value of background.
+
+ First of all create an image using paint brush or any other tool (300 x 300 px)
+
+  |--------|--------|
+  | Red    | Green  |
+  |--------|--------|
+  | Magenta|Violet  |
+  |--------|--------|
+
+.icon {
+    height: 130px;
+    width: 140px;
+    border: 1px solid #aaa;
+    display: inline-block;
+}
+.icon .red {
+    background: url(../images/box-color.png) no-repeat 0px 0px;
+}
+.icon .red:hover {
+    background: green;
+}
+.icon .green {
+    background: url(../images/box-color.png) no-repeat -155px 0px;
+}
+icon .magenta {
+    background: url(../images/box-color.png) no-repeat 0px -145px;
+}
+.icon .violet {
+    background: url(../images/box-color.png) no-repeat -155px -145px;
+ }
+<div class="icon red"></div>
+<div class="icon green"></div>
+<div class="icon magenta"></div>
+<div class="icon violet"></div>
+
+[Download the paint.net - an enhance paint brush kinda drawing tool]
+
+
+The list elements - ordered list - <ol>
+                    unordered list - <ul>
+                    data list - <dl>
+---------------------------------------------
+To organize the content just like a bulleted  list or hierarcy. You can use list properties of CSS to set the style.
+
+<ol>
+  <li>Content goes here...</li>
+  <li>Content....
+     <ol>
+        <li>Nested list item1</li>
+        <li>Item2</li>
+     </ol>
+  </li>
+</ol>
+
+<ul>
+ <li>Item1</li>
+ <li>Item2</li>
+ <li>Item3
+   <ul>
+     <li>Item31</li>
+     <li>Item32</li>
+   </ul>
+  </li>
+</ul>
+
+<dl>
+  <dt>Data Term</dt> 
+  <dd>Data Defiition</dd>
+  <dt>No</dt>
+  <dd>10</dd>
+  <dt>Name</dt>
+  <dd>Happy</dd>
+</dl>
+
+Use list-style-type: number | disc | circle | rect | alphabet | none etc to set the style of <ul> or <ol>
+    list-style-image : url(image); to set the image instead of number or symbols.
+    
+The <li> is a block element and so ol, ul.
+
+Example: Generally, the hyperlinks (or you can say menu) are ogranized by the <ul> in order to classify the content.
+
+For example,
+
+<ul>               <!-- <ul class="menu"> -->
+  <li>File         <!-- <li class="first-level">File -->
+      <ul>                     
+          <li>New File</li>
+          <li>Close file</li>
+          <li><a href="#">Exit</a></li>
+       </ul>
+   <li>
+   <li>Master <!-- <li class="first-level">Master -->
+       <ul>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Suppliers</a></li>
+          <li><a href="#">Products</a></li>
+        </ul>
+   <li>
+   <li>Reports   <!-- <li class="first-level">Reports -->
+       <ul>
+          <li><a href="#">Daily</a></li> 
+          <li><a href="#">Weekly</a></li>
+       </ul>
+  </li>
+</ul>
+
+And CSS selectors:
+
+.menu {
+    list-style: none;
+    padding: 0;
+    background: #aaa;
+}
+
+.first-level {
+    display: inline-block;
+    padding: 4px 10px 4px 10px;
+}
+
+.first-level > ul {
+    padding: 6px;
+    list-style: none;
+    position: absolute;
+    display: none;
+    background: #aaa;
+}
+.first-level:hover > ul {
+    display: block;
+}
+     
+
+The <table> elements
+---------------------------------------------
+To represent data into two dimentional just like rows and columns.
+
+The table is composed of one or more elements and form the object tree. If any one object is not constructed properly then the table might be not formed properly.
+
+General Structure
+-------------------
+
+ <table>
+      <caption>Sample Data</caption>     <!-- <caption> is  Optional -->
+      <thead>                            <!-- <thead> is  Optional -->
+        <tr>
+            <th>Head1</th><th>Head2</th>
+        </tr>
+      </thead>
+      <tbody>                           <!-- <tbody> is  Optional -->
+         <tr>
+             <td>Data1</td><td>Data2</td>
+         </tr>
+      </tbody>
+      <tfoot>                           <!-- <tfoot> is  Optional -->
+         <tr>
+             <td>Foot1</td><td>Foot2</td>
+         </tr>
+      </tfoot>
+  </table>
+
+th - stands for table head
+td - stands for table data
+tr - stands for table row
+
+Style the table - border around the cells and table 
+----------------------------------------------------
+set border-collapse: collapse to the table and border for table,td, and th.
+
+Example:
+table {
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+    padding: 10px;
+}
+table caption {
+    background: black;
+    color: white;
+}
+th, td {
+    border: 1px solid #aaa;
+    padding: 5px;
+}
+
+Use of nth-child(odd|even|num) pseudo selector to style the rows of table.
+-------------------------------
+Assume that we've table that has two or more rows and we want to show stripped style of rows.
+
+tr:nth-child(odd) {
+  background: #aaa;
+}
+tr:nth-child(even) {
+  background: #eee;
+}
+
+
+Merge the columns using colspan="num-of-columns" and rows using rowspan="n" of <td> or <th> attribute.
+-----------------------------------------------------------------------------------------------------
+
+<style>
+  table {
+    border-collapse: collapse;
+    border: 1px solid black;
+  }
+  td, th {
+    border: 1px solid black;
+    padding: 10px;
+   }
+</style>
+
+ <table>
+      <tr>
+          <td colspan="2"></td>
+          <td colspan="2"></td>
+          <td colspan="2"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td colspan="2" rowspan="2"></td>  <--- Don't count rowspan to count the columns -->
+          <td></td>
+          <td></td>
+          <td rowspan="3"></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </table>

@@ -1,0 +1,526 @@
+JavaScript Language
+===============================================================================
+
+The "JavaScript" also called "ECMAScript" or "Mocha" is an object oriented programming language for the client; especially the web-browser and server environment NodeJs for server side code. The European Computer Merchant Association is non-profit organization that enhance the language (programming) standard by drafting and managing the standard and current standard of ECMA is ECMAScript 6. The ES6 is not fully implemented in many browsers yet but we will implemented fully in next coming years (2017 and 2018). In fact, as of today, all web-browsers (not old browsers like Internet Explorer 8 or older) had implemented the ECMAScript 5. So, our actions to learn the ES will be combined ES5 and ES6 as these features exists on browsers.
+
+JavaScript, itself a open source programming language except the name 'JavaScript' is a registered trademark of "Oracle Corp". Different browser vendors, NodeJS and other vendors continiously develop the JavaScript language with new standards.
+
+JavaScript programing language,
+
+  => supports an object oriented programming methodology -- It is a way to design the program code so we can re-use the
+	code without retyping or copying+pasting the code.
+
+  => It is a "dynamic" language. (PHP is also dynamic language) - In daynamic language, data type of data is evaluted
+	during the program/code execution.
+		There are two types of programming languages:
+			1. Statically or strongly type checked language
+			2. Dynamic language
+
+		C,C++, Java etc are example of statically or strongly type checked language. In this category, a 		datatype is assigned to the data and variable at the time of compilation.
+			e.g
+				int a;  means now the "a" can store only int and its data type cannot be changed.
+				a=10; <--OK
+				a=1.0; <--Error
+		In dynamic language, datatype is will be examined/tested at runtime.
+
+			e.g 
+				a = 10;   means it is int type
+				a = 1.0;  now, it is double
+				a= "Hello"; now, it is string
+		
+			In other words, datatype is assigned to data not the variables.
+
+	Source code: A program instruction set that is written using computer programming language by the developer
+			is called source code. The source code cannot be understood directly by the platforms or OS.
+			The source code instructions must be converted into "Native or Object code" in order to 
+			execute that code by the platforms or OS. 
+	Native code: A program instruction set for the platform or OS. There are two software that translate "source
+			code" to "native code" and these are:
+			1. Compiler - C, C++, Java, VB.NET, C# uses "compiler translator".
+					The compiler reads all instructions of source code and
+					convert them into "native" if all instructions have
+					valid grammar or syntax. 
+					The compiler displays "syntax error list" if any one 
+					statement of source code is invalid.
+					Once compiler produces "native code" successfully then this
+					code is executed by the OS or platforms.
+
+			2. Interpreter - JavaScript, PHP, Ruby etc languages uses "Interpreter" translator.
+
+					The "Interpreter" reads one statement at a time.
+					It validates the syntax rule for that statement.
+					If that statement has syntax error then stop the 
+					further interpretation.
+					if that statement is error free then generate
+					native instruction and the OS or platform will
+					execute it.
+					Then, the interpreter reads the next statement and so on...
+   => is modular programming language.
+		Small piece of individual component or group of component is called "Module" and this approach
+		allows developer to include neccessary code that is really needed. This approach is maily used by
+		the library vendors.
+
+   => is a funtional programming language.
+		The "function" is a first class citizen in JavaScript (First class object). Everything in JavaScript
+		is an object and it is a function.
+
+
+  => is a case-sensitive programming language. JavaScript syntax derived from C++ language (C mostly) and almost its
+		keywords are very similar to the C/C++ languages.
+		for example,  if, switch, for, while, do while, break, return etc
+
+How to write JavaScript code?
+------------------------------
+You can write JavaScript code into a separate "JavaScript" file (mostly with .js) or embed the JavaScript code into the web documents (.html, .php etc).
+
+Method-1 Embed the JavaScript code 
+
+<!doctype html>
+
+<body>
+  <h2>This is head1</h2>
+  <script>
+      /* This is JavaScript code block */
+      var no = 10;
+      var firstName = "Happy";
+  </script>
+  <h3>This head2</h3>
+  <script>
+     //code
+  </script>
+</body>
+
+You can use <script></script> HTML Tag to embed/write JavaScript code anywhere within the web document (inside the <head> or <body>").
+
+Method-2 Create separate .js file and embed using <script src="file.js"></script>
+
+sample.js
+---------
+var no = 10;
+var firstName = "Happy";
+
+and your web doc: sample.html
+-------------
+<body>
+  <script src="sample.js"></script>
+  ....
+</body>
+
+How the JavaScript code is executed?
+-------------------------------------
+The JavaScript Engine (for example, Chrome's JavaScript Engine name is "V8"), execute the JavaScript code in an order in which it is added into the web-document. (It execute code in sequential order).
+
+<!doctype>
+
+<body>
+ <h1>Head1</h1>
+ <script>
+   document.write("<h2>Head2</h2>");
+ <script>
+ <h3>Head3</h3>
+ <script>
+   document.write("<h4>Head4</h4>");
+ <script>
+</body>
+
+"document" is a reference name of an object and "write" is a method(function).
+
+How to debug (run the code for testing) the JavaScript code?
+--------------------------------------------------------------
+As we know that the JavaScript code is run by the JavaScript Engine and there is a special tool called "Developer Tool" allow us to debug the code. Press F12 or Ctrl+Shift+I to open the Developer Tool.
+
+To debug the code means to execute the code and understand execution behavior in order to develop the software.
+
+Use the "Console" section in Developer Tool to understand and deug the JavaScript code.
+
+Developer Tool and its application
+-----------------------------------
+Developer Tool allow us to debug the JavaScript code using "Console" prompt. The console area of Developer tool also displays the intermediate result of debugging. There is an object called "console" and its methods (functions) are used to dump/write/display information/data/error etc into the console area of the Developer tool.
+
+  We will use console functions for,
+
+   1. console.log(value1,value2,...) - to display data at console
+   2. console.info(value) - to display data as information
+   3. console.dir(object) - to display data and its properties
+   4. console.error(value) - to display error / exception messages
+
+Example: (Code in .html or .php page)
+
+<script>
+  console.log(10,"This is text", 10.20, true);
+  console.error("Please input field.");
+  console.info("Action started...");
+  console.dir( new Date() );
+</script>
+
+Run +  Open Developer Tool to see the output.
+
+
+  We will use following methods to test the code & data.
+
+     1. console.assert( boolean ) - throws error if booealn expression is false; skip otherwise.
+     2. console.debug( expr ) - display content of expression
+     3. console.trace( expr ) - display expr
+     4. console.watch( expr ) - display/watch the expr
+
+Example:
+
+ <script>
+    console.assert(10==11);  
+    console.assert(10==10);
+ </script>
+
+JavaScript naming conventions
+==================================================================
+We will strictly follow the following naming conventions because million of JavaScript developers uses it.
+
+1. Use lower case to name the local variables. 
+2. Use "camelCase" to name the fields, function name, object reference variable
+   In camelCase - the first word must be lowercase and then capitalize the first letter of each word.
+3. Use "PascalCase" to name the Type/Class/Datatype.
+4. Use CAPITAL letters to name the constants. 
+5. Use proper & meaningful names. Don't use underscore. However sometimes it is used at prefix or suffix. e.g __test;
+
+Variables and Data types
+===========================
+JavaScript is untype and dynamic language. There is not named type like int,char,float etc exists in C/C++ language.
+
+However these types are exists but they don't have explict name. The JavaScript engine automatically select the datatype based upon the value.
+
+The "var" keyword is used to create or declare a variable. However you can create a variable without using "var" keyword.
+
+Example:
+<script>
+  var first;
+  var second = 10;
+  third = 20;
+  fourth = "Hello";
+
+  console.log( first, second, third, fourth );
+</script>
+
+The "typeof" keyword is used to determine the datatype of value/variable.
+
+Example:
+
+<script>
+  var no = 10;
+  var firstName = 'Happy';
+  var lastName = 'Patel';
+  var address = "Unjha";  // You can use single and double quote to create string
+  var phone;
+
+  console.log( typeof(no), typeof(firstName), typeof(address), typeof(phone));
+</script>
+
+  
+The window namespace
+===============================================
+Any name you create (variable, object, function, class) will be automatically added into "window" namespace. 
+
+What is namespace?
+   A namespace is a technique to create a group of some items and keep one group of item away or distinct from another group of items.
+
+Example:
+
+
+<script>
+  var no   = 10;
+  firstName = "Happy";
+  window.lastName = "Patel";
+  console.log(window.no, window.firstName, lastName);
+</script>
+
+The Number type
+=================
+To represent numeric value, there is only one data type and it is 64 bits long (8 bytes) to store integer and real (double) value.
+
+<script>
+  var no   = 1012123123000.111123;
+  console.log( no , typeof no);
+  console.log( no.toExponential(2));
+  console.log( no.toFixed(2));
+</script>
+
+The String type
+=================
+Any data enclosed into single or double quote is a string type.
+
+The single quote automatically escape the backslash characters. \n \t \a \b \r \" are backslash or escape chars.
+The double quote escape the single quote.
+
+<script>
+  var path = "c:\\new folder\\test";
+  var path1 = 'c:\\new folder\\test';
+
+  console.log( path );
+  console.log( path1 );
+
+  var info1 = "The 'Red' sun";
+  var info2 = 'The "Red" sun';
+  console.log( info1,info2);
+
+  var info1 = "The \"Red\" sun";
+  var info2 = 'The \'Red\' sun';
+  console.log( info1,info2);
+</script>
+
+String functions: You can use the console prompt or write code in web document.
+
+<script>
+  var str = "     the red sun  ";
+  console.log('[', str , ']');
+  console.log('[', str.trim() , ']');
+  console.log( str.toUpperCase());
+  console.log( str.toLowerCase());
+
+  str = "Hello World";
+  for(i=0;i<str.length;i++) {
+     console.log( str.charAt(i) );
+  }
+
+  //display text enclosed with different tags
+  console.log( str.anchor("test") );
+  console.log( str.bold() );
+  console.log( str.sub() );
+</script>
+
+The bool type - true and false value
+---------------------------------------
+JavaScript consider following value as "falsy" (false) value:
+
+   false
+   0
+   0.0
+   undefined
+   null
+   NaN - Not a number error 
+   "" - empty string
+   '' - Empty string
+
+Other than "falsy" value is a "truthy" (true).
+
+<script>
+  var no;   /* set no = 0 or no = 10 * 'abc'; etc */
+  if(no) {
+    console.log('Truthy', no);
+  } else {
+    console.log('Falsy', no);
+  }
+</script>
+
+The if, switch statements
+--------------------------
+JavaScript uses same syntax for if and switch  as it is in C/C++/PHP language.
+
+ if(condition) {
+   //true body
+ } else {
+   //false body
+ }
+
+ switch( expr ) {
+    case literal: stmt....
+                  break;
+    case literal: stmt..
+                  break;
+ }
+ 
+Example:
+<script>
+  var no = parseInt( prompt('Enter the day no : ') );
+  switch( no ) {
+     case 1:
+          console.log('Monday'); break;
+     case 7:
+          console.log('Sunday'); break;
+     case 2:  
+          console.log('Tuesday'); break;
+     default:  
+          console.log('Invalid day!'); break;
+     case 3:
+           console.log('Wednesday!'); 
+           break;
+  }
+</script>
+
+1. prompt("message") - It is used to input value and returns string data.
+2. parseInt( str )   - It parses a "string" into integer
+3. parseFloat(str)   - It parses a "string" into float(double)
+4. alert('display text in dialog box') - Open message dialog box
+
+Example:
+
+<script>
+ var no = parseFloat( prompt('Enter the amount ') );
+ if( no ) { // if valid number
+    console.log( no * no ); //print square
+ } else {
+    console.log( 'Invalid number' );
+ }
+</script>
+             
+5. confirm('message') - It returns true if confirm OK button is pressed; returns false otherwise.
+
+Example:
+<script>
+    var result = confirm('Are you sure to delete a record?');
+    if(result) {
+        console.log('Deleted!');  // alert('Record deleted');
+    } else {
+        console.log('Skipped');   // alert('Record skipped');
+    }
+</script>  
+   
+The operators
+===================================================
+1. Arithmetic or mathematical operators for number type  +  -  *  /  % 
+   Check expressions at console prompt:
+ >10 + 8 / 2
+  14
+ >(10 + 8) /2
+ > 7 % 2
+  1   (Remainder or modulo)
+> 6 % 7
+6
+
+ + operator for string to concatnate (join) string with other values.
+ -------------------------
+ <script>
+    var no1 = 10,
+        no2 = 20;
+
+    var str = "sum of " + no1 + " and " + no2  + " is " + no1 + no2;
+    console.log(str);
+    str = "sum of " + no1 + " and " + no2  + " is " + (no1 + no2);
+    console.log(str);
+ </script>
+ 
+ - / * for string to number conversion
+ ----------------------------------------
+ JavaScrpt allow us to convert "string digits" into number type.
+
+    stringValue - 0   or stringValue * 1 or stringValue / 1
+
+Example:
+
+<script>
+ var str1 = "10",
+     str2 = "5",
+     amount;
+
+ amount = str1 - 0; // str1 * 1 to convert string to number
+ console.log( amount, typeof(amount));
+
+ amount = str1 * str2;
+ console.log( amount );
+</script>
+
+ To convert number to string - use toString(), toFixed() or toExpotential()
+   
+    <script>
+       var no = 1000;
+       var str = no.toString();
+       console.log( typeof( str ), str );
+    </script>
+
+2. Relational operator  
+    >  >=   <  <=
+    == equal to compare two value for equality
+    != not equal to compare two value for not equality
+    === identity - compare two value and type for equality
+    !== not identity - compare two value and type for unequality
+  
+>10==10  
+true
+>10=='10'
+true
+>10==='10'
+false
+>10===10
+true
+>10!='10'
+false
+>10!=='10'
+true
+
+3. Logical operators  && ||  ! (not)
+4. Increment decrement operators ++ and --
+5. Conditional operator 
+     exp1 ? exp2 : exp3;
+
+    if exp1 is true the "exp2" will be selected; "exp3" will be selected otherwise.
+
+<script>
+ var no1 = 30,
+     no2 = 5,
+     max;
+
+ max = no1 > no2 ? no1 : no2;
+ console.log (max);
+ console.log ( no1<no2 ? no1 : no2 ); //min
+</script>
+
+Example:
+
+var no1=2,no2=5,no3=52;
+
+var max = no1 > no2 && no1 >no3 ? no1 : no2>no1 && no2>no3 ? no2 : no3;
+console.log(max);
+
+Loop statements - for, while and do while (C/PHP style)
+===============================================================
+Print 1 to 10 numbers using different loops:
+
+<script>
+ for(i=1;i<=10;i++) {
+   console.log(i);
+ }
+
+ i=1;
+ while(i<=10) {
+  console.log(i);
+  i++;
+ }
+
+ i=1;
+ do {
+   console.log(i);
+   i++;
+ }while(i<=10);
+</script>
+
+The variable and its scope
+=====================================================================
+We can create a variable inside the function but they will become "global" if they are created without using "var" keyword. If you want to create "local variable - only used inside the function" the create variables inside the 
+function using "var" keyword.
+
+Example:
+<script>
+  var no  = 10;
+  function test() {
+      no1 = 20;
+  }
+
+  //call the function
+  test();
+  console.log( no);
+  console.log( no1 );
+</script>
+
+Now, change code in test():
+
+   function test() {
+      var no1 = 20;
+    }
+and run the program. The last statement will displays error - no1 is undefined
+
+There are two scopes - (1) global scope - variable created outside the function
+		       (2) local scope - variable created inside the function using "var" keyword.
+
+
+
+
+      
+ 
+

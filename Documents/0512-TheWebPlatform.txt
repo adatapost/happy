@@ -1,0 +1,505 @@
+The Web Platform
+================================================================================================
+
+What is a "Platform"?
+----------------------
+
+The "platform" is a programmin environment that is used to develop, deploy and execute the applications. Basically, a platform is madeup of "Runtime" and "Libraries or API". (Deploy = Install)
+
+In order to develop a web application, we need to learn & use two platforms:
+
+ 1. The Web Client Platform --- It is a web-browser that renders markup (HTML, SVG, XML), decorate objects using CSS,
+				support JavaScript programming and many more things.
+
+ 2. The Web Server Platform --- It is a set of two or more software that are installed into a machine and provide
+				a way to work with one or more other server side applications.
+
+				The "PHP" framework/platform is an example of Web Server Platform. (ASP.NET, JSP, 
+				Ruby On Rails etc are example of Server Platforms). 
+				
+[Note:
+
+    JavaScript is not a Java.
+    -------------------------
+
+    JavaScript is a client programming language and mostly used with web-browser applications but this language
+    can be used with NodeJS Server Platform; So, the JavaScript language also be used with Client & Server applications.
+
+    The JavaScript language is a specification based and the ECMA - Europeane Computer Merchant Association maintain
+    the specification called "ECMAScript". So, we can say JavaScript or ECMAScript. Current ECMAScript specification
+    is 5 and ECMAScript specification 6 is ready to be implemented. Nearally all web-browsers have implemented     ECMAScript 5 (ES5) and now some of the new browsers have started to implement the ECMASCript6 - ES6.
+
+    The "Java" is a language & platform and is used to develop varities of kind of apps - Mobile, Desktop, Service,
+	Web App.
+
+    The only term that relate the Java & JavaScript is the "Oracle Corp, USA" that has registered trademark for
+    "JavaScript" and "Java" name.
+]
+
+What software needed to develop & deploy the web applications?
+==================================================================
+
+In order to develop & deploy the web app we need following software:
+
+1.  Client Platform - Web-browser Or Mobile platform (Android, IOS, WinPhone)
+2.  Server Platform - PHP (PHP Language, PHP Library & PHP Runtime)
+3.  HTTP Server     - A server program that acts as a bridge between client & server platforms.
+    OR
+    Web Server 
+4.  Database Products - MySql, Oracle, MsSql etc (This product also a part of Server Platform).
+
+[Figure]
+
+|------------|
+| Client1    |----|
+| WebBrowser1|    |                  |-------------------|
+|------------|    |--->Requests ---> | HTTP (WEB) Server |
+                  |                  |
+|------------|    |<--Responses ---- |-------------------|
+| Client2    |    |                        ||     /\
+| WebBrowser2|----|                        \/     || 
+|------------|    |                  |-----------------------------------------| 
+                  |                  | Application Server ( Server Platforms   |
+ ........         |                  | (PHP, JSP, ASP.NET etc                  |
+                                     | |-------|  |-------|  |------| |=-----| |
+                                     | | app1  |  | app2  |  | app3 | | app4.| |
+                                     | |-------|  |-------|  |------| |------| |
+                                     |                                         |
+                                     | ..... other apps....                    |
+                                     |-----------------------------------------|
+                                         /\                /\
+                                         ||                ||
+                                         \/                \/
+                                      RDBMS (Databases)  Other Servers (Mail,Exchange, Identity etc)
+
+                                  
+[NOTE: IDE - Integrated Development Environment is a software or collection of tools to increase the developer's productivity. They are provide designers, themes, syntax intellesense & highlight and many more things.
+	DreamW, PHP Strom, Eclipse, Netbeans etc are example of IDEs. You can also uses some very powerful
+	editors like - VIM, ATOM, SUBLIME TEXT etc]
+
+[NOTE: Eclipse, Netbeans, VIM, ATOM and SUBLIME are open source software.]
+
+Web Browser
+============
+
+A web-browser is the most complex software a computer ever has. The web-browser is made up of number of open source and properiotor libraries & tools but following are the major components and tools that really matters:
+
+1. Browsers have implemented various "STANDARDS especially web standards - HTML, CSS, SVG, XML, JavaScript
+2. Browsers have their own Graphics (Independent of OS) system - mostly they uses OpenGL c++ library.
+3. Browsers are developed using C++ and hence they uses number of C/C++ libraries ( for images, video, audio,
+	cipher, I/O and many more)
+4. They have implemented Network protocols - especially - HTTP-x, FTP etc.
+5. To help out the developers, browsers have a "Developer Tool" (Press F12 or Ctrl+Shift+I to start this tool with any     web-browser)
+6. Browsers are runtime environment and they launch, execute and stop the programs.
+7. Each web-browser has:
+		1. HTML Parser --- A software that parse (examine & separate the element & data) the HTML document,
+				   create HTML objects and arrange these objects as a document Tree.
+		2. CSS Parser  --- CSS parser or processor apply "styles" to the HTML objects.
+                3. JavaScript Engine -- A JavaScript Language + JavaScript Library and JavaScript Runtime to
+					create, & execute JavaScript programs.   
+                4. SVG - Scalar Vector Graphics parser
+                5. XML - Extensible Markup Language parser
+                6. JSON - JavaScript Object Notation parser
+  runtimes and also it manages the client programms -- allocate-deallocate memory, start-stop the threads, request the
+  resources and receive the responses.
+
+				   
+"Parser means examine, separation from one thing to another and then interpret (translate) the content". For example,
+
+<select>
+  <option value="IN">India</option>
+  <option>Nepal</option>
+</select>  
+
+ Above HTML tags are firstly examined by the HTML parser and then after it creates HTML objects - set properties and  call methods.
+		
+
+What is data interchange format and how they help us to and also help the programs?
+------------------------------------------------------------------------------------------
+To set label to each piece or collection of data using international standard is known as "Standard Data Interchange Format" and almost all programming languages, OS, browers and millions of custom programs uses & supports the XML & JSON data interchange formats:
+
+Assume the RAW DATA (No format) and it tells nothing about the data
+10,10,Visnagar,Visnagar,56500
+
+Whereas, following formats tells everything about data.
+
+XML - STANDARD DATA INTERCHANGE FORMAT
+<mydata>
+  <id>10</id>
+  <houseno>10</houseno>
+  <city>Visnagar</city>
+  <taluka>Visnagar</taluka>
+  <amount>56500</amount>
+</mydata>
+JSON - STANDARD DATA INTERCHANGE FORMAT
+{
+  "mydata": 
+     {
+       "id": 10,
+        "houseno": 10,
+        "city": "Visnagar",
+        "taluka": "Visanagar",
+        "amount": 56500
+       }
+}
+
+In XML, <id>, <houseno> etc are called markup or tags.
+With JSON, "id", "houseno" etc are called "keys" or "labels".
+
+HTML
+=======
+
+The Hypertext Markup Language is a markup language that is used to present data on the web. In other words, HTML is a standard, proposed & maintained by the W3C - Word Wide Web Consortium, an organization which define the standards for the WEB - HTML, CSS, SGV etc.
+
+Current stable HTML standard is 5 - HTML5.
+
+(Previous HTML standards are 2,4) 
+
+In NEW HTML Standard, it includes old HTML 2 and HTML4 standards and also depricates (retires) some elements/tags. Of course there are some new HTML tags are introduced with HTML5.
+
+For example,
+   <marquee>, <font> <frameset> and many other old tags are depricated from the current HTML 5 standard. So, don't use these depricated tags in new development however browsers have these deprecated tags and they supports as a backward compatibility.
+
+ 
+[NOTE: To learn more about W3C - w3c.org]
+
+
+HTML do not support "style" features and that's why we must have to use "CSS - Cascade Stylesheet" language to set "style" the HTML objects.
+
+The HTML Parser & CSS Parser works together because "styles" are only set to the HTML objects. So, firstly HTML objects will be created and then CSS properties will be assigned.
+
+HTML Elements & Tags
+---------------------
+Element is a class or "Type" or "Datatype" that describes the nature of "tag". 
+ For example, 
+<p>
+  Hello
+</p>
+ 
+ Here <p> is a tag.  Each tag is formed with <ElementName> 
+ and p is an element -- HtmlParagraphElement class.
+
+We've two tags of P element.
+<p>First</p>
+<p>Second</p>
+
+Element's Attribute
+---------------------
+Element's attribute is an extra detail that will be set or get via <tag> or programs.
+
+Attribute name follows standard naming rules that includes :
+   1. name must begins with alphabets
+   2. whitespace is not allowed
+   3. Hyphen is used between two words
+
+Value of an attribute may or may not be enclosed with single or double quotes but if the value includes whitespaces or special characters then value must be enclosed with single or double quotes.
+
+For example,
+
+<p name="first"><p> is same as <p name='first'></p> or <p name=first></p>
+
+But, <p name=first name></p> is not valid. Here we must have to use double/single quote.
+     <p name="first name"></p>
+
+Html is not case-sensitive
+--------------------------
+HTML tags are case-insensitive however for the code simplicity use lower case letter to name the tags and attributes.
+
+ <BODY></BODY> is valid but we should not use upper letters.
+
+Web document structure
+----------------------
+A web document is a file or the output produced by the program. Following is the basic structure of web document:
+
+<!doctype html>
+
+<html>
+ <head>
+    <meta charset="utf-8" />
+    <title>Title your web document</title>
+    <!--- other tags goes here --->
+ </head>
+ <body>
+    <!--- includes varities of tags & text ---->
+ </body>
+</html>
+ 
+
+The <!doctype html>
+--------------------
+
+<!doctype> is called preprocessor and it is an instruction for the browser to start the parsing HTML tags using latest statand of HTML (which is HTML5 now) and create objects accordingly.
+
+If <!doctype> is missing then web browsers render (paint) your content somewhat differently and the output will always surprise you.
+
+There are two browsing modes - standard mode (when <!doctype html> added) and quirk mode (not added <!doctype>).
+
+<html>
+-------------------
+It is the root element and it has two direct children <head> and <body>. There is an optional attribute "lang" 
+<html lang="en_US">.
+
+<head>
+---------------------
+<head> and its childen tags are used to instructs the web-browsers in one or different ways.
+
+<meta charset="utf-8"> tells the web-browser to select utf-8 encoding scheme.
+
+UTF means Universal Text Format and it is also known as unicode character set. In computing we've two types of character sets - ANSI and Unicode.
+
+ ANSI-American National Standard Institute charset allows English letters and symbols and there are total 256 characters.
+
+ Unicode allow us to write English and Non-English letters and symbols. There are two types of unicode character set -  Unicode 8bits (UTF-8) and Unicode 16 bits (UTF-16).
+
+ Unicode characters can hold char code between 0 to 65535 and ANSI can hold 0 to 255 char code.
+
+ Databases uses "nchar, nvarchar, ntext" field types to represent unicode characters.  "n" in "nchar" is national character set.
+
+<title>  element tells the browser to set the window's title and it must appears after the <meta charset>. Note that the
+	title is required.
+
+There are three more tags : <script (to embed the JavaScript code)
+			    <link>  (to embed the CSS selectors document)
+                            <style> (to embed the CSS selectors)
+  can be used inside the <head>. But, these tags can be used inside the <body> tag too.
+
+IMPORTANT: 
+
+  Never add <script> tags inside the <head> because the JavaScript code will block the further execution of document
+	content. It is recommend to use a section just before the </body> to write or insert the JavaScript blocks.
+
+  Always use <link> tags inside the <head> because that way the web-browser will render the content using CSS properties   progressively.
+
+  The <style> can be used either <head> and inside the <body> where it is actually needed but before the use.
+
+Best practice example:
+<!doctype html>
+<html lang='en_US'>
+ <head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="your-css-doc.css"/>
+    <style> 
+       ...
+    </style>
+ </head>
+ <body> 
+    .....
+    .....
+    <script src="external-js-file.js"></script> 
+    <script>
+       ..JavaScript code....
+    </script>
+  </body>
+</html>
+    
+
+Example: Create .htm or .html file to test what will happen when <!doctype> is missing
+
+[Note: Old OS especially DOS and Win95 supports three char extension so people uses .htm instead of .html extension. Now, new OS supports unlimited char length extension so now use .html ]
+
+<!doctype html>
+<html>
+  <head>
+      <title>I've English / ANSI char set</title>
+      <style>
+        html { background: black; }
+        body { background: blue; }
+        h1 { background: red; }
+      </style>
+   </head>
+   <body>
+        <h1>Welcome!</h1>
+   </body>
+ </html>
+
+
+<body>
+--------
+The <body> and its children are going to be rendered and will be displayed on the document area of the web-browser. There are number of HTML elements which can be added inside the <body> but except the <meta>, <head> and <title>.
+
+
+How the browser renders the HTML <tags>?
+----------------------------------------
+The HTML Parser creates an object from each html <tag>. It means each <tag> you've added in a document will be tranformed into an object.
+
+An object is a collection of allocated bytes (RAM) and its size can be vary from 1 byte to 4 GB. 
+
+Every "object" has an identity and this idenntity is called "class or datatype or type or category".
+
+For example,   int a,b,c,d;  we have four objects and each is 4 bytes long
+               
+
+ <p>Hello</p><p>World</p>  -- We've two objects of class or element "p". These objects are created by the web-browsers
+				when we lanch and load the web-document.
+
+
+HTML and whitespaces
+-----------------------
+Whitespaces are ignored by the HTML parser. If your document has one or more blanks, spaces, tabs, new lines then they will be stripped (removed) and only one space will be added.
+
+For example,
+
+<p>The     red
+sun
+     and  red 
+  rose.</p>
+
+will be displayed as "The red sun and red rose."
+
+
+HTML Entities
+-------------------
+HTML Entities are special character that is used to embed certain characters and symbols.
+
+ Syntax : &entity-name;    (begins with & and ends with ;)
+
+&nbsp;    space char  <p>The&nbsp;&nbsp;&nbsp;&nbsp;red sun</p> (will add four spaces)
+&lt;      < less then symbol
+&gt;      > greater than
+&amp;     &
+&copy;    copyright symbol
+
+The <pre> -- pre element preserve the whitespace
+-------------------------
+You can also use <pre> tag to preserve the spaces.
+<pre>
+The
+   red
+      sun
+         and
+      red
+   rose.
+</pre>  
+
+ELEMENT types - based upon the display property
+===================================================================================================
+HTML Elements falls under following groups based upon their display (render).
+
+1. Block elements
+2. Inline elements
+3. Block-inline elements
+
+Block element - Block elements share the width of their parent elements and height will be calculated as per the content
+		 they hold.
+	      - Via CSS properties we can change the height & width of block elements.
+
+	      - div, body, html, h1 to h6, p, header, footer etc are block elements,
+
+Inline elements - Inline element's content calculate the height & width and they placed one after one just like a
+		  word processor.
+		- We can't set height & width of inline elements.
+		- abbr, code, em, strong, span, label etc are example of inline elements.
+Block inline    - These elements have inline as well as block as a mixed display.
+
+		- <input>, <textarea>, <select> etc are example of inline block.
+
+Example:
+
+<body>
+ <style>
+   * {
+    border: 1px solid red;
+   }
+ </style>
+ <p>This is a block - p</p>
+ <div>This is also a block - div</div>
+ <p>
+   I want to learn <code>HTML</code>, <code>CSS</code>, and <code>JavaScript</code>. The <abbr>PHP</abbr> is a <em>Server Platform</em>
+ </p>
+</body>
+
+HTML Elements and category as per their usage
+=================================================================================
+1. Sementics elements - These elements don't have special purpose. For example, h1 to h6 are used to set headings but the following semetics elements can be used anywhere to describe your content on the web.
+
+div, nav, header, footer, section, article, span, aside etc are example of sementic elements. These elements can be block or inline but they don't have a very special visual or user interface.
+
+You can use following markup to describe your activity:
+
+<div>    <!--- first activity --->
+  <div>Activity Title</div>
+  <div>Activity Links/Menu</div>
+  <div>
+       Activity description.....
+  </div>
+  <div>
+      End or foot note 
+   </div>
+</div>
+<div>  <!-- second activity -->
+  .....
+</div>
+
+Above markup & data can be expressed via appropriate HTML sementic elements too:
+
+<article>
+   <header>Activity Title</header>
+   <nav>Links</nav>
+   <section>
+     ....
+   </section>
+   <footer>
+      ..
+   </footer>
+</article>
+
+2. Heading elements -- h1, h2, h3 ,h4,h5 and h6 are special purpose block elements that displays text in different sizes.
+   These elements are used to structure the web documents.
+
+   Always use heading elements in a cronological order. 
+
+Example:
+<h1>Site title</h1>
+<p>Text.....</p>
+
+<h2>Sub title</h2>
+<div>
+  other content....
+  but don't include h1 and h2 here. You should use any heading between h3 to h6
+  ...
+  <h4>heading four</h4>
+  <h5>heading five</h5>
+  ....
+</div>
+
+But, following is not a good practice:
+
+<h1>Site title</h1>
+<h2>Sub title</h2>
+<h1>Welcome to..</h1> <--- it should use either h2 or h3 to h6
+
+3. Text elements -- These elements represent the text and they can't have block elements as a children.
+   
+p, code, pre, abbr, label, kbd, sub, sup, em, strong etc are example of text elements.
+
+<p>
+  <div>This is not valid</div>   <-- Invalid markup
+</p>
+
+<p>
+  <p> </p> <-- invalid
+</p>
+<p>
+ <label>Name <input type="text"/></label> <--valid
+</p>
+
+4. form elements or input elements
+
+frameset, form, input, select, textarea etc are example of form elements and they are used to represent the data interactively and also used to send the data (submit the data) to the server application.
+
+5. list elements
+
+These elements list the data in varities of forms via ol, ul, li, dt, dd, datalist etc elements.
+
+6. Embed elements
+
+These elements reads the document or web resource and embed the content into current document.
+
+These are video, audio, img, picture, link, script, embed, object, iframe etc elements.
+
+7. Misc elements
+
+Hyperlink, map (image map), bookmark, summary are some of the misc elements.
+
+[Mozilla Developer Network - MDN is the best web site to learn the standard content of web]

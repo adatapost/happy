@@ -1,0 +1,614 @@
+The Function Object
+====================
+
+The "function" keyword defines an object which includes data and actions(tasks). In JavaScript everything is an object.
+
+[Object means area of RAM or collection of allocated bytes in which we can store data and instructions]
+
+JSON object - stringify() and parse() functions
+------------
+
+JSON.stringify( obj ) - returns string form of the JSON object (Object to string conversion)
+
+JSON.parse( string ) - Returns a JSON object from the string.
+
+Example:
+<script>
+   var emp = {
+       "id": 10,
+       "name": "Raj"
+   };
+
+   //JSON object to string format
+   var jsonStr = JSON.stringify(emp);
+   console.log( emp );
+   console.log( jsonStr );
+
+   jsonStr = '{"roll": 50,"name": "Manoj"}';
+   console.log( jsonStr );
+   //Json string to JSON object
+   var std = JSON.parse( jsonStr );
+   console.log( std , std.roll, std.name, std["roll"]);
+</script>
+
+
+To define a JavaScript function
+================================
+There are two syntax to create a function.
+
+  1. Declarative function or Named function.
+
+       Syntax;
+
+       function functionName(arguments....) {
+         //body
+       }
+
+  2. Unnamed function or Anonymous (nameless) function Or Variable function
+
+     var varName = function(arguments...) {
+         //body
+      }
+
+Example:
+
+<script>
+  function add(no1,no2) {
+     var no3 = no1 + no2;
+    console.log(no3);
+  }
+  
+  var mul = function(no1, no2) {
+     var no3 = no1 * no2;
+     console.log( no3 );
+   }
+
+  //call the functions
+
+  add(40,50);
+  mul(4,5);
+</script>
+
+Example: Returns the value from function
+
+<script>
+    function add(no1,no2) {
+        return no1 + no2;
+    }
+
+    var mul = function(no1, no2) {
+       return no1 * no2;
+    }
+
+    //call the functions and return result
+
+    result = add(40,50);
+    console.log( result );
+    result = mul(4,5);
+    console.log( result );
+
+    result = mul(10,mul( add(4,5),6 ));
+    console.log( result );
+</script>
+
+Example: Get function address/reference
+
+  <script>
+    function add(no1,no2) {
+        return no1 + no2;
+    }
+
+   /* Retrieve function reference and store it to variable */
+   var p = add;
+   var jo = JSON.parse;
+    console.log( p(10,20), jo('{"id":10}') );
+</script>
+
+
+Function parameters/arguments
+------------------------------
+JavaScript function parameters are optional and you may pass one or more parameters even the parameter list is not created.
+
+<script>
+  function printIt(no,name,city) {
+    console.log(no,name,city);
+  }
+
+  //call the function
+  printIt();                  // No argument so result will be
+                              // undefined undefined undefined
+
+  printIt(10);                // 10 undefined undefined
+  printIt(30,'Raj');          // 30 Raj undefined
+  printIt(20,'Man','Patan');  // 20 Man Patan
+  printIt(30,'Man','PAtan','1st standard',true); // you can supply as many as argument you want
+</script>
+
+The "arguments" automatic local array
+--------------------------------------
+Each JavaScript function creates an array whose name is "arguments" which store arguments.
+
+Example:
+
+<script>
+    function printIt() {
+        console.log(arguments);
+    }
+   
+    printIt();  
+    printIt(10);
+    printIt(30,'Raj');
+    printIt( {no: 10, name: "Manish" });
+</script>
+
+Use "Namespace" to create a collection of related functions - OR Class or TYPE or DataType
+---------------------------------
+<script>
+
+   //Namespace for the functions
+
+    MyMath = {};
+
+    MyMath.add = function(a,b) {
+        return a+b;
+    }
+   MyMath.sub = function(a,b) {
+       return a-b;
+   }
+   MyMath.sum = function() {
+        var s = 0;
+        for(index in arguments) {
+            s= s + arguments[index];
+        }
+        return s;
+   }
+   MyMath.max = function() {
+        if(arguments.length<2)
+        {
+            return new Error("Atleast two or more value required!!!") ;
+        }
+       var s = arguments[0];
+       for(index in arguments) {
+           if(arguments[index] > s) {
+               s=arguments[index];
+           }
+       }
+       return s;
+   }
+   MyMath.sqrt = Math.sqrt;
+
+   console.log( MyMath.add(10,20), MyMath.sub(4,6,9));
+    console.log( MyMath.sum(10,20,30,40), MyMath.max(44,5,77,2,33,88,4));
+    console.log( MyMath.max(101));
+    console.log( MyMath.sqrt(20));
+</script>
+
+Calling functions via HTML object's events
+==========================================
+An event is a variable whose value can be null (undefined) or an address/reference of function.
+
+The event variable names of HTML object begins with "on" prefix.
+
+  onclick -- When we hit the left mouse button
+  onkeypress - When we press a key
+  onmousedown - When a mouse button is hold down
+  onmouseup - When a mouse button is realased.
+
+Example:
+
+<button onclick="sayHello()">Say Hello</button>
+<p onclick="sayHello()">Say Hello</p>
+
+<script>
+ function sayHello() {
+   console.log('Hello World');
+ }
+</script>
+
+Passing arguments to the event:
+------------------------------
+<button onclick="sayHello()">Say Hello</button>
+<p onclick="sayHello(10,20,30,40)">Say Hello</p>
+<div onclick="sayHello('Raj')">Say Hello</div>
+<div onmouseover="sayHello('Mouse is over')">Say Hello</div>
+<script>
+    function sayHello() {
+        console.log(arguments);
+    }
+</script>
+
+Receive mouse and key specific event data
+--------------------------------------------
+Use "window.event" property in your method.
+
+<div onmousedown="mouseIt(event)">Please move the mouse pointer</div>
+<input type="text" onkeypress="textIt(event)"/>
+<script>
+    function mouseIt(event) {
+       console.log( event.x, event.y, event.button);
+    }
+    function textIt(event) {
+        console.log( event.which);
+    }
+</script>
+
+Callback functions
+========================================
+A "callback" is nothing but passing a function into another function and the passed function will be invoked by that function later.
+
+<script>
+  function add(no1,no2) {
+      return no1+no2;
+  }
+  function sub(no1,no2) {
+      return no1-no2;
+  }
+  mul = function(n1,n2){
+      return n1*n2;
+  }
+
+  function action( func ) {
+      var result = func(10,20);
+      console.log( result);
+  }
+
+
+  action( add );
+  action( mul );
+  action( sub );
+  action( function(n1,n2){
+      return n1/n2;
+  });
+
+</script>
+
+Example: Array's callback functions - find( function(T,num,obj) {} )
+
+<script>
+   var nos = [10,20,30,4,6,2,7,8];
+    var searchNo = 30;
+  result= nos.find( function(ele,index,obj) {
+       //console.log(ele, index, obj);
+       return ele == searchNo;
+   });
+  if(result) {
+      console.log( 'Found ', result);
+  } else {
+      console.log( 'Not Found');
+  }
+</script>
+
+Example:  array.every( function(ele, num, obj) { } ) - loop will be controlled by return value of the callback.
+
+<script>
+   var nos = [10,3,6,7,20,30,-2];
+
+  var n1=  nos.every( function(e,i, obj) {
+       console.log( e,i);
+       return e<=15;  //till condition become true
+    });
+  console.log(n1);
+
+   n1= nos.sort( function(a,b) {
+       if(a==b) return 0;
+       if(a>b) return 1;
+       if(a<b) return -1;
+   } );
+
+   console.log(n1);
+
+   n1= nos.sort( function(a,b) {
+       if(a==b) return 0;
+       if(a<b) return 1;
+       if(a>b) return -1;
+   } );
+   console.log(n1);
+</script>
+
+Example: Pass function reference
+
+<script>
+    var names = ['Raj','Amar','Manoj','Zarin','Balu'];
+
+    console.log( names.sort( dec_cmp ) );
+
+    function asc_cmp(name1,name2) {
+        if(name1==name2) return 0;
+        if(name1>name2) return 1;
+        return -1;
+    }
+    function dec_cmp(name1,name2) {
+        if(name1==name2) return 0;
+        if(name1<name2) return 1;
+        return -1;
+    }
+</script>
+
+
+Example: 
+
+<script>
+    var names = ['Raj','Amar','Manoj','Zarin','Balu'];
+
+    console.log( names.filter(function(e,i){
+        //console.log( e,i);
+        if(e.charAt(1)=='a')
+           return e;
+    }));
+
+    console.log( [11,2,3,4,5,6,7,8,5,3,2,22,3,4].filter( function(e,i){
+        if(e>=5 && e<=10) return e;
+    } ));
+
+</script>
+
+setInterval( function, intervalValueIn-milliseconds) and setTimeout( function, timeout-in-millis)
+-------------------------------------------------------------------------
+
+setInterval( ) will call the "callback" after successive completion of given milliseconds (1 sec = 1000 millis)
+
+setTimeout( ) will call the callback once after ellapse of given millis.
+
+<script>
+ setTimeout( function() {
+  console.log('After 1 sec'); 
+ }, 1000); 
+ setTimeout( function() {
+  console.log('After 3 sec'); 
+ }, 3000); 
+</script>
+
+Example: Display Date() on each second
+
+<script>
+    setInterval( function() {
+        console.log(new Date());
+    }, 1000);
+
+</script>
+
+Example: Get timer id and call clearInterval() to stop the setInterval
+
+
+var tid = setInterval( function() {
+   console.log( new Date() );
+}, 1000);
+
+setTimeout( function() { 
+   clearInterval(tid);
+},5000);
+
+
+The Closure - A JavaScript function that returns another function along with "data"
+-------------------------------------------------------------------------------------
+A "closure" is a function object that holds data along with one or more function(s).
+
+Example: 
+
+<script>
+  function myClosure(name) {
+      return function(){
+          console.log('Hello!', name);
+      }
+  }
+  //OR
+  function myClosure1(name) {
+      var p1 = function() {
+          console.log('Hello!', name);
+      }
+      return p1;
+  }
+
+  var greet=myClosure('Happy');
+  var hi = myClosure1('Man');
+
+  //call the function - closure
+
+    greet();
+    hi();
+    hi();
+</script>
+
+Example: Returns JSON that contains data & functions (two functions "incr" and "decr")
+
+<script>
+  function counter(value) {
+      return {
+          "incr": function(){
+              value++;
+              console.log(value);
+          },
+          "decr": function() {
+              value--;
+              console.log(value);
+          }
+      }
+  }
+
+  //Call the function to create closure
+  count = counter(10);
+  count.incr();
+  count.incr();
+  count.incr();
+  count.decr();
+  count.decr();
+</script>
+
+Example: MyDate() function returns JSON - closure of three functions and data (d,m,y)
+
+<script>
+   function MyDate(d,m,y) {
+       return {
+           "isValid": function() {
+               if( (m>=1 && m<=12) && (d>=1 && d<=31)) {
+                   return true;
+               }
+               return false;
+           },
+           "incrDay": function() {
+               d++;
+               if(d>31) {
+                   d = 1;
+                   m++;
+                   if(m>12)
+                   {
+                       y++;
+                       m=1;
+                   }
+               }
+           },
+           "print": function() {
+               console.log(d,'-',m,'-',y);
+           }
+       }
+   }
+
+   d = MyDate(30,12,2001);
+   console.log( d.isValid());
+   d.print();
+   d.incrDay();
+   d.print();
+   d.incrDay();
+   d.print();
+</script>
+
+The custom object using function 
+================================
+
+If we want to create a new datatype or class by wrapping related data and function, we can use following syntax:
+
+ function YourClassOrDataTypeName(initial data - arguments ) {
+   //fields or data members
+   this.fieldName1 = value1;
+   this.fieldName2 = value2;
+   ......
+ }
+
+ Note: the "field" or "data" member must be created by prefix "this" otherwise it will be just a regular variable.
+
+ The "new" keyword will allocate memory for the "fields" or "data members".
+
+Example:
+
+<script>
+    //MyDate datatype or class
+    function MyDate(d,m,y) {
+        this.d = d;
+        this.m= m;
+        this.y = y;
+    }
+    //Objects of MyDate class
+    d1 = new MyDate(10,10,2002);
+    d2 =  new MyDate();
+    d2.d = 9;
+    console.log( d1,d2);
+
+    //Class Emp
+ function Emp(id,name,age) {
+     this.id = id;
+     this.name = name;
+     this.age = age;
+
+     this.print = function() {
+         console.log(this.id, this.name, this.age);
+     }
+     this.setName = function(name) {
+         this.name = name;
+     }
+     this.setId = function(id) {
+         this.id = id;
+     }
+     this.setAge = function(age) {
+         this.age = age;
+     }
+ }
+
+ //Objects from Emp class
+
+    e1 =  new Emp();
+    e2 = new Emp(10,'Raj');
+    e3 = new Emp(20,'Man',30);
+
+    console.log( e1 );
+ console.log( e2 );
+ console.log( e3 );
+
+  e1.setAge(50);
+  e1.setName("Rajesh");
+
+  e1.print();
+  e2.print();
+  e3.print();
+</script>
+ 
+
+Example: Product and Products class -- Composition example
+
+<script>
+    function Product(name,qty,rate,unit,category) {
+        this.name = name;
+        this.qty = qty;
+        this.rate = rate;
+        this.unit = unit;
+        this.category = category;
+    }
+
+    function Products() {
+        this.products = [];
+        this.add = function(product) {
+            product.amount = product.qty * product.rate;
+            this.products.push( product );
+        }
+        this.print = function() {
+            for(i in this.products) {
+                var  p = this.products[i];
+                 console.log( p);
+                //console.log( p.name, p.qty);
+            }
+        }
+    }
+
+    cart = new Products();
+    console.log(cart);
+
+    cart.add(new Product('Rotomac',10,5.5,'Nog','Pen'));
+    cart.add(new Product('Raynold',10,6.5,'Nog','Pen'));
+    cart.add(new Product('Navneet',2,125.5,'Doz','Book'));
+
+    cart.print();
+</script>
+
+The Arrow function syntax - a new syntax to create the function
+==================================================================
+This is also another form of anonymous or variable function.
+
+Syntax:
+
+  (parameter1,parameter2,...) => single-statement;    
+
+   
+  (parameter1,parameter2,...) => {
+     // Multiple statements
+     ......
+   }
+
+Example:
+
+<script>
+ var hi = () => console.log('Hello World!');
+
+ var series = (start,end) => {
+    for(i=start;i<=end;i++) {
+      console.log(i);
+    }
+  }
+
+ var add = (no1,no2) => no1+no2;
+ 
+ //call the functions
+ hi();
+ console.log( add(4,5) );
+ series(11,21);
+</script>
+
+

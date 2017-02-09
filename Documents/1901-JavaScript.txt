@@ -1,0 +1,315 @@
+The Array type
+===========================
+
+There are two methods to create arrays:
+
+ 1. [ ] - subscript literal
+    e.g
+    var nos = [10,30,60];
+
+ 2. Array object
+
+    var nos = Array(20,30,90);
+
+We can use one of the two method (or both) to create array objects. 
+
+JavaScript array is a dynamic array and we can append, delete, replace elements via array's methods.
+
+JavaScript array have integer index whose value must be greater than or equals to 0 (zero).
+
+Each array object has "length" property which returns count of elements.
+
+Example:
+
+var nos = [10,20,30,40];
+var names = [];   //empty array  
+var cities = Array(); // or [] - empty array
+
+console.dir(nos);
+console.dir(names);
+console.dir(cities);
+
+/* Multiline comment
+   You can assign or create new element
+*/
+
+names[10] = "Raj"; //create
+nos[0] = 700;      //assign
+
+console.log( names.length ); // 11
+names[0] = 'Manu';
+console.log ( names );
+
+
+
+Example:
+
+<script>
+    var nos = [10,20,30];
+    console.log( nos[0], nos[2], nos[1]);
+
+    /* if index is not exists then it returns 'undefined' (falsy) */
+    if( !nos[5] ) {
+        console.info('Adding new index');
+        nos[5] = 900;
+    }
+    nos[100] = 90;
+    console.log( nos );
+
+    /* This will prints all empty and non-empty elements */
+    for(i=0;i<nos.length;i++) {
+        console.log(  nos[i]     );
+    }
+
+    /* for in loop */
+    console.info('for in loop output -- returns index of non-empty');
+    for(i in nos) {
+        console.log(i, nos[i]);
+    }
+</script>
+
+NEVER use simple for, while or do while loop to traverse the arrays.
+ALWAYS use for in loop. 
+
+ Syntax of for in loop
+
+ for(index in ArrayVarName) {
+    //
+ }
+
+Array functions or methods
+----------------------------------
+
+<script>
+
+ //1. create empty array
+ var items = [];
+ //2. push() to append an element (add at end of the list)
+ items.push('mehsana');
+ items.push(100);
+ items.push('Surat');
+ console.log( items );
+
+ //3. pop() to remove the last added element 
+ console.log( items.pop() );  //removes 'Surat'
+ console.log( items.pop() );  //removes 100
+ console.log( items.pop() );  //remove 'mehsana
+</script>
+
+push() and pop() methods define the STACK data structure behavior - LIFO (Last In First Out)
+
+splice(index,range,value) -  This method insert , delete or replace the element(s).
+
+    splice(index,0,value)  -- If range is 0 then element will be inserted at given index
+    splice(index,range)    -- if range is > 0 then range elements will be deleted
+    splice(index,range,value)    -- if range is > 0 then range elements will be deleted and insert a new element 
+					(replace)
+
+<script>
+    var items = [10,20,30,40];
+    /* Insert at 1 index*/
+    items.splice(1,0,100);
+    items.splice(0,0,200); // insert at 0 index
+
+    /* delete a single element at 3 index*/
+    items.splice(3,1);
+    items.splice(0,2); // delete two elements from 0 index
+    items.splice(0,2,900); // delete first two item and insert 900
+    console.log( items );
+</script>
+
+concat(array1,array2,...) - To merge or join arrays and form the new one
+
+<script>
+  var no1 = [10,20,30];
+  var no2 = [100,200];
+  var no3 = no1.concat(no2); // no2.concat(no1);
+  console.log(no3);
+  for(i in no3) {
+    console.log( no3[i] );
+  }
+  no3 = no3.concat(['A','B','C'],[99,77,44],no1,no2);
+  console.log(no3);
+</script>
+
+
+reverse() - Reverse the elements
+<script>
+  console.log( [11,22,33].reverse() );
+</script>
+
+indexOf() - search an element - returns -1 if not exists; returns index otherwise
+
+<script>
+  var nos = [11,22,33,44];
+  console.log( nos.indexOf(100) ); // -1 not found
+  console.log( nos.indexOf(22) ); // 1 found at 1 index
+</script>
+
+The Custom Objects 
+=======================================================
+In JavaScript everything is an "object" -- number, string, boolean are simple objects and are created using special literal syntax.
+
+  e.g
+
+      var roll = 10;
+      var student = "Mr. Raj";
+  
+The custom or user defined objects are created to store complex data and actions. It means we can create a custom object by using existing objects - number, string ,booleans, arrays, function and custom objects themselves.
+
+There are number of ways to create the custom objects but initialally we will use JavaScript Object Notation - JSON method. The JSON is a syntax to create a custom object and nowsday this syntax is hugely accepted by almost all programming frameworks/OS/Tools to format the data and send them over network.
+
+Syntax:
+
+{
+  "property1": value1,
+  "property2": value2,
+   ..
+}
+
+{ opening curly brace and } closing curly brace define an object.
+
+   e.g  var student = { };
+
+Inside the object scope, we have to set one or more key-value (name-value) pairs which is delimited by comma operator.
+
+The key or name must be a string whereas value can be belongs to any TYPE.
+
+Object's Property is set or get via . (dot) member access or [ ] subscript operator.
+
+Example:
+
+<script>
+ var student = { 
+   "roll": 10,
+   "name": {
+         "firstName": "Raj",
+         "lastName": "Patel"
+    },
+   "birthDate": "10-10-1992"
+  };
+
+ console.log( student );
+ 
+ //Read properties
+ console.log( student.roll, student.name.firstName, student.name.lastName, student.birthDate);
+ console.log( student["roll"],student["name"]["firstName"]);
+ console.log( student["birthDate"],student["name"].lastName);
+
+ //Write (update) properties
+
+ student.roll = 90;
+ student.name.firstName = "Rajendra";
+
+ console.log( student );
+
+  //Add new property
+
+   student.age = 10;  //Valid - number is in-build object
+
+    /* Following lines throws excepttions because "address" object
+       is not constructed yet.
+     
+       So, we will comment these two lines */
+
+    //student.address.city = "Mehsana";
+    //student.address.pin = 384001;
+
+
+    //Solution-1
+    student.address = {};
+    student.address.city = "Mehsana";
+    student.address.pin = 384001;
+
+    //Solution-2
+    student.address = {
+        "city": "Patan",
+        "pin": 53333
+    };
+
+    console.log( student );
+
+    //Delete the property using "delete propertyName"
+
+    delete student.age;
+    delete student.address;
+
+    console.log( student );
+</script>
+
+Enumerate (Iterate) the object property using for in loop
+---------------------------------------------------------
+<script>
+    var student = {
+        "roll": 10,
+        "name": {
+            "firstName": "Raj",
+            "lastName": "Patel"
+        },
+        "birthDate": "10-10-1992"
+    };
+
+    for(property in student) {
+        console.log( property , student[property]);
+    }
+</script>
+
+No need to use single or double quote to name the property if property name do not has whitespaces or some special chars.
+
+For example,  
+
+ var emp = {
+      id: 10, 
+     name: "Raj",
+    "local address": "Mehsana"
+ };
+ console.log( emp );
+
+But we will always encosed names in single or double quotes because of the better & clean representation.
+
+Create a custom namespace - to create a group for variables, functions, objects etc
+=====================================================================================
+The "window" is system defined namespace and we want to keep our data in separate location than "window" namespace. 
+
+We will use JSON syntax to create a namespace.
+
+Example:
+
+<script>
+    //Custom Namespaces
+    MyApp = {};
+    Happy = {};
+
+    MyApp.loop = {
+        count: 0,
+        length: 10
+    };
+    MyApp.students = [];
+    MyApp.students.push( {"roll": 10, "name": "Manoj"});
+    MyApp.students.push( {"roll": 20, "name": "Ranoj"});
+
+    Happy.count = 10;
+    for(index in MyApp.students) {
+        var s = MyApp.students[index];
+        console.log(s.roll,s.name, MyApp.students[index].roll, MyApp.students[index]["name"] );
+    }
+
+   console.log(Happy.count, MyApp.loop.cout);
+</script>
+
+Array of objects
+=================
+
+<script>
+
+ var emps = [ {"id": 1, "name": "Raj"}, {"id": 2, "name": "Man" } ];
+
+ //use push,pop, splice etc functions
+
+ emps.push( { "id": 3, "name": "Tan" } );
+
+ for(index in emps ) {
+   var e = emps[index];
+   console.log( e.id, e.name );
+ }
+</script>
