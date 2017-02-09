@@ -1,5 +1,5 @@
 JavaScript Language
-===============================================================================
+=====================
 
 The "JavaScript" also called "ECMAScript" or "Mocha" is an object oriented programming language for the client; especially the web-browser and server environment NodeJs for server side code. The European Computer Merchant Association is non-profit organization that enhance the language (programming) standard by drafting and managing the standard and current standard of ECMA is ECMAScript 6. The ES6 is not fully implemented in many browsers yet but we will implemented fully in next coming years (2017 and 2018). In fact, as of today, all web-browsers (not old browsers like Internet Explorer 8 or older) had implemented the ECMAScript 5. So, our actions to learn the ES will be combined ES5 and ES6 as these features exists on browsers.
 
