@@ -1,0 +1,17 @@
+<script>
+    var emps = [
+        {"id": 10, "name": "Raj"},
+        {"id": 30, "name": "Rahul"},
+        {"id": 1, "name": "Amar"},
+        {"id": 6, "name": "Man"},
+        {"id": 2, "name": "Babu"},
+    ];
+
+    emps.sort( (e1,e2)=> {
+        if(e1.name == e2.name) return 0;
+        if(e1.name > e2.name) return 1;
+        return -1;
+    });
+
+    console.log( emps );
+</script>
